@@ -21,8 +21,8 @@ def kmer_counts(seq: str, k: int) -> dict[str, int]:
     """Count overlapping k-mers, sorted by key. ValueError if k < 1."""
     if k < 1:
         raise ValueError("k is less than 1!")
-    seq_u = seq.upper()
-    counts = seq.Counter()
+    seq = seq.upper()
+    counts = Counter()
     
     """Loop & Slicing in 3 """
     for i in range(len(seq) - k + 1):

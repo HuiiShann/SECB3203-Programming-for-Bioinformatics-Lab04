@@ -1,4 +1,4 @@
-from src.panel import sorted_copy, sort_variants
+from src.panel import sorted_copy, sort_variants, Variant
 from src.lookup import kmer_counts, safe_expression
 
 def test_sorted_copy_leaves_original_unchanged():
@@ -16,19 +16,19 @@ def test_sorted_copy_leaves_original_unchanged():
 def test_chromosome_order():
     """Test 2: Chromosome order including X and M."""
     variants = [
-        {"chrom": "M", "pos": 10},
-        {"chrom": "X", "pos": 5},
-        {"chrom": "2", "pos": 15},
-        {"chrom": "1", "pos": 20}
+        Variant("M", 10, "A", "C"),
+        Variant("X", 5, "T", "G"),
+        Variant("2", 15, "C", "T"),
+        Variant("1", 20, "G", "A")
     ]
     
     result = sort_variants(variants)
     
     # 1 and 2 come first, then X, and M is always last
-    assert result[0]["chrom"] == "1"
-    assert result[1]["chrom"] == "2"
-    assert result[2]["chrom"] == "X"
-    assert result[3]["chrom"] == "M"
+    assert result[0].chrom == "1"
+    assert result[1].chrom == "2"
+    assert result[2].chrom == "X"
+    assert result[3].chrom == "M"
 
 
 def test_kmer_counts_edge_cases():
