@@ -4,7 +4,6 @@ from collections import Counter
 
 _BASES = "TCAG"
 _AMINO = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG"
-CODON_TABLE: dict[str, str] = None
 
 # Build the 64-codon dictionary programmatically
 CODON_TABLE: dict[str, str] = {
@@ -34,7 +33,7 @@ def kmer_counts(seq: str, k: int) -> dict[str, int]:
 
 def shared_genes(panel: set[str], detected: set[str]) -> set[str]:
     """Genes that are both on the panel and detected. & = intercept"""
-    return panel & detected
+    return set(panel) & set(detected)
 
 
 def safe_expression(expression: dict[str, float], gene: str) -> float | None:

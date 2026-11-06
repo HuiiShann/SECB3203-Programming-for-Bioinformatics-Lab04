@@ -1,5 +1,5 @@
-from src.panel import sorted_copy, sort_variants, Variant
-from src.lookup import kmer_counts, safe_expression
+from panel import sorted_copy, sort_variants, Variant
+from lookup import kmer_counts, safe_expression
 
 def test_sorted_copy_leaves_original_unchanged():
     """Test 1: sorted_copy leaves the original list unchanged."""
